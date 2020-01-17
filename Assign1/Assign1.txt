@@ -1,0 +1,24 @@
+Selbi Nuryyeva
+Math 280
+Assignment 1
+Due: Jan 15, 2020
+IDE: Xcode
+
+[1] Give the full path name of the executable you created for Assign1.cpp.
+Users/selbi/Library/Developer/Xcode/DerivedData/Math_280-erpcigopommupidmwdshvzdntfgv/Build/Products/Debug/Math_280
+
+[2] Give the full path name of the file that is included by the statement "#include <iostream>". 
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/iostream
+
+[3] If you put a file in your project directory, does it automatically included in your project? 
+I tried creating a new *.cpp file and it was not automatically included.
+
+[4] If you delete/remove your project, does it delete all the files associated with the project? 
+In Xcode, to delete a project, one has to navigate to the folder and delete the folder associated with the project. That deletes associated files. If the folder is deleted, all related solutions are deleted too. However, the executable Math_280 is still there (in the location specified in Qn1).
+
+[5] What happens with respect to building the executable from Assign1.cpp, if you remove the line "using namespace std;" in Assign1.cpp? 
+In the line of "cout << "Hello World " << endl;"
+it says "Use of undeclared identifier 'cout'; did you mean 'std::cout'?"
+and highlights "cout" and "endl".
+
+Line "using namespace std;" allows one to use symbols (like functions and variables) from external libraries
