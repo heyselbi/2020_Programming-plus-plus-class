@@ -25,6 +25,10 @@ type unsigned int
 type double
 By observing the output of your program, for each data type determine the maximal value of k (for k ≤ 30) for which the Taylor series approximation of ex is reasonable for the value at x=1.0. Place the results of your observation in Assign2results.txt.
 
+In problem [C3], use the value x=1.0 when determining the maximal value of k. The problem statement has been modified to read: 
+
+"By observing the output of your program, for each data type determine the maximal value of k (for k ≤ 30) for which the Taylor series approximation of ex is reasonable for the value at x=1.0."
+
 Tips:
 
 You should construct ExpTest.cpp as a modification of Nfactorial.cpp, so copy Nfactorial.cpp to ExpTest.cpp, and then modify appropriately.
