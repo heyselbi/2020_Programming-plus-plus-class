@@ -1,0 +1,241 @@
+Selbi Nuryyeva
+Math 280
+Assignment 2
+Due: Jan 22, 2020
+IDE: Xcode
+
+[C1] Download and then modify the program MachineLimits.cpp so that it also prints out the properties of the built-in type long and built in type double. Run the program and cut and paste the output into a plain text file Assign2results.txt.
+	Integer type properties 
+
+	Max int : 2147483647
+	Min int : -2147483648
+	Max unsigned int : 4294967295
+	Min unsigned int : 0
+
+	Floating point type properties 
+
+	float mantissa decimal digits : 6
+	float max exponent  : 38
+	float min exponent  : -37
+	float max    : 3.40282e+38
+	float min    : 1.17549e-38
+	float machine epsilon (unit round off) : 1.19209e-07
+	XXXX Execution Complete XXX
+	Program ended with exit code: 0
+
+[C2] Create a program Nfactorial.cpp that uses a for loop to compute and print out k factorial (k!) for values of k from 1 to N, where N is an integer input. This program will repeat the computation multiple times with the computation being done using different types to accumulate the product. Specifically, the program should compute and print out the results when the product is accumulated with a variable of
+
+type int
+type unsigned int
+type double
+By observing the output of your program, for each data type determine the maximal value of k (for k ≤ 30) for which the computation of k! is still reasonable. Place the results of your observation in Assign2results.txt.
+	//Maximal value of k is 12 for int and unsigned int is 12 and >30 for double. Below is the proof.
+
+	//I set the precision to 3 decimal points
+	Enter N: 5
+	int type: 120
+	unsigned int type: 120
+	double type: 1.200e+02
+	Program ended with exit code: 0
+	//5! seems to work fine
+
+	Enter N: 12 
+	int type: 479001600
+	unsigned int type: 479001600
+	double type: 4.790e+08
+	Program ended with exit code: 0
+	//12! is the maximum that can be used for int and unsigned int giving correct consistent answers
+
+	Enter N: 13
+	int type: 1932053504
+	unsigned int type: 1932053504
+	double type: 6.227e+09
+	Program ended with exit code: 0
+	//13! is 6,227,020,800, which is beyond the int type limit (of 2,147,483,647) and unsigned int type limit (of 4,294,967,295)
+	// hence only double type worked for N=13
+
+	Enter N: 30
+	int type: 1409286144
+	unsigned int type: 1409286144
+	double type: 2.653e+32
+	Program ended with exit code: 0
+	//As mentioned earlier, double is the only one that works since it has not reached its limit, but int and unsigned int has
+	// hence int and unsigned int give random incorrect numbers
+
+[C3] Create a program ExpTest.cpp that computes and prints out the values of the k-term Taylor series approximation to ex for k = 1 to N, where N is input. The terms in the sum will be accumulated using a variable of type double. Your output should also print out the value of ex returned by the standard library routine std::exp(x) as well as the absolute difference between the values of the Taylor series approximation and std::exp(x). This program will repeat the computation multiple times with the computation being done using different types to accumulate the product that's required to obtain k!. Specifically, the program should compute and print out the results when k! is accumulated with a variable of
+
+type int
+type unsigned int
+type double
+By observing the output of your program, for each data type determine the maximal value of k (for k ≤ 30) for which the Taylor series approximation of ex is reasonable for the value at x=1.0. Place the results of your observation in Assign2results.txt.
+	//Maximal value of k is 12 for int and unsigned int is 12 and >30 for double, as it was in previous question
+	
+	//Since I compute factorial first (as it was done in [C2]) before computing the summation, my maximal values
+	// do not change from [C2]; factorial becomes limiting factor.
+
+	//My code goes this way:
+	int factorialInt = 1;
+    double sumInt=0.0;
+    for(int k=1 ; k<=N ; ++k)
+    {
+        //  a. Compute factorial N!
+        factorialInt *= k;
+        //  b. Compute x^k/N! and sum it up as it computes
+        sumInt = sumInt + (pow(x,k)/factorialInt);
+        //here, pow(double,int) computes into double, while factorialInt is int
+        //therefore, sumInt = double + (double/int) will result in double for all cases
+
+
+    //Below is the proof for N = 12, 13 and 30. I also include detailed step by step look at N = 30.
+
+    //N = 12
+	Accurate exp(1) is: 2.71828182845904509e+00
+	Enter N: 12
+
+	Approximation with integer type for k is: 1.71828182828616871e+00
+	Deviation from exp(x) is: 1.00000000017287638e+00
+
+	Approximation with unsigned integer type for k is: 1.71828182828616871e+00
+	Deviation from exp(x) is: 1.00000000017287638e+00
+
+	Approximation with double type for k is: 1.71828182828616871e+00
+	Deviation from exp(x) is: 1.00000000017287638e+00
+	Program ended with exit code: 0
+
+
+	//N = 13
+	Accurate exp(1) is: 2.71828182845904509e+00
+	Enter N: 13
+
+	Approximation with integer type for k is: 1.71828182880375269e+00
+	Deviation from exp(x) is: 9.99999999655292404e-01
+
+	Approximation with unsigned integer type for k is: 1.71828182880375269e+00
+	Deviation from exp(x) is: 9.99999999655292404e-01
+
+	Approximation with double type for k is: 1.71828182844675914e+00
+	Deviation from exp(x) is: 1.00000000001228595e+00
+	Program ended with exit code: 0
+
+
+	//N = 30
+	Accurate exp(1) is: 2.71828182845904509e+00
+	Enter N: 30
+
+	Approximation with integer type for k is: 1.71828183156332281e+00
+	Deviation from exp(x) is: 9.99999996895722276e-01
+
+	Approximation with unsigned integer type for k is: 1.71828184567996956e+00
+	Deviation from exp(x) is: 9.99999982779075536e-01
+
+	Approximation with double type for k is: 1.71828182845904553e+00
+	Deviation from exp(x) is: 9.99999999999999556e-01
+	Program ended with exit code: 0
+
+
+	//From overall look at it, it is very hard to find that there was an error (ie. reaching the int and unsigned int max limit)
+	//To have a deeper look, I will print out every factorial N! that it computes at every step of N! from k=1 to k=N.
+	//Please see the comments next to factorial outputs.
+	//N = 30
+	Accurate exp(1) is: 2.71828182845904509e+00
+	Enter N: 30
+	factorialInt for 1 is 1
+	factorialInt for 2 is 2
+	factorialInt for 3 is 6
+	factorialInt for 4 is 24
+	factorialInt for 5 is 120
+	factorialInt for 6 is 720
+	factorialInt for 7 is 5040
+	factorialInt for 8 is 40320
+	factorialInt for 9 is 362880
+	factorialInt for 10 is 3628800
+	factorialInt for 11 is 39916800
+	factorialInt for 12 is 479001600
+	factorialInt for 13 is 1932053504 //--> this is erroneous factorial. 13! is 6227020800. Factorials at k=13 and below are all random.
+	factorialInt for 14 is 1278945280
+	factorialInt for 15 is 2004310016
+	factorialInt for 16 is 2004189184
+	factorialInt for 17 is -288522240 //--> we even get random negative values
+	factorialInt for 18 is -898433024
+	factorialInt for 19 is 109641728
+	factorialInt for 20 is -2102132736
+	factorialInt for 21 is -1195114496
+	factorialInt for 22 is -522715136
+	factorialInt for 23 is 862453760
+	factorialInt for 24 is -775946240
+	factorialInt for 25 is 2076180480
+	factorialInt for 26 is -1853882368
+	factorialInt for 27 is 1484783616
+	factorialInt for 28 is -1375731712
+	factorialInt for 29 is -1241513984
+	factorialInt for 30 is 1409286144
+
+	Approximation with integer type for k is: 1.71828183156332281e+00
+	Deviation from exp(x) is: 9.99999996895722276e-01
+	factorialIntuns for 1 is 1
+	factorialIntuns for 2 is 2
+	factorialIntuns for 3 is 6
+	factorialIntuns for 4 is 24
+	factorialIntuns for 5 is 120
+	factorialIntuns for 6 is 720
+	factorialIntuns for 7 is 5040
+	factorialIntuns for 8 is 40320
+	factorialIntuns for 9 is 362880
+	factorialIntuns for 10 is 3628800
+	factorialIntuns for 11 is 39916800
+	factorialIntuns for 12 is 479001600
+	factorialIntuns for 13 is 1932053504 //--> same error is observed here. 13! is 6227020800, but due to max limit, it gives random numbers.
+	factorialIntuns for 14 is 1278945280
+	factorialIntuns for 15 is 2004310016
+	factorialIntuns for 16 is 2004189184
+	factorialIntuns for 17 is 4006445056
+	factorialIntuns for 18 is 3396534272
+	factorialIntuns for 19 is 109641728
+	factorialIntuns for 20 is 2192834560
+	factorialIntuns for 21 is 3099852800
+	factorialIntuns for 22 is 3772252160
+	factorialIntuns for 23 is 862453760
+	factorialIntuns for 24 is 3519021056
+	factorialIntuns for 25 is 2076180480
+	factorialIntuns for 26 is 2441084928
+	factorialIntuns for 27 is 1484783616
+	factorialIntuns for 28 is 2919235584
+	factorialIntuns for 29 is 3053453312
+	factorialIntuns for 30 is 1409286144
+
+	Approximation with unsigned integer type for k is: 1.71828184567996956e+00
+	Deviation from exp(x) is: 9.99999982779075536e-01
+	factorialDouble for 1 is 1.00000000000000000e+00
+	factorialDouble for 2 is 2.00000000000000000e+00
+	factorialDouble for 3 is 6.00000000000000000e+00
+	factorialDouble for 4 is 2.40000000000000000e+01
+	factorialDouble for 5 is 1.20000000000000000e+02
+	factorialDouble for 6 is 7.20000000000000000e+02
+	factorialDouble for 7 is 5.04000000000000000e+03
+	factorialDouble for 8 is 4.03200000000000000e+04
+	factorialDouble for 9 is 3.62880000000000000e+05
+	factorialDouble for 10 is 3.62880000000000000e+06
+	factorialDouble for 11 is 3.99168000000000000e+07
+	factorialDouble for 12 is 4.79001600000000000e+08
+	factorialDouble for 13 is 6.22702080000000000e+09 //--> double gives a correct value for factorial of 12, which is 13 6227020800
+	factorialDouble for 14 is 8.71782912000000000e+10
+	factorialDouble for 15 is 1.30767436800000000e+12
+	factorialDouble for 16 is 2.09227898880000000e+13
+	factorialDouble for 17 is 3.55687428096000000e+14
+	factorialDouble for 18 is 6.40237370572800000e+15
+	factorialDouble for 19 is 1.21645100408832000e+17
+	factorialDouble for 20 is 2.43290200817664000e+18
+	factorialDouble for 21 is 5.10909421717094400e+19
+	factorialDouble for 22 is 1.12400072777760768e+21
+	factorialDouble for 23 is 2.58520167388849782e+22
+	factorialDouble for 24 is 6.20448401733239410e+23
+	factorialDouble for 25 is 1.55112100433309861e+25
+	factorialDouble for 26 is 4.03291461126605650e+26
+	factorialDouble for 27 is 1.08888694504183519e+28
+	factorialDouble for 28 is 3.04888344611713837e+29
+	factorialDouble for 29 is 8.84176199373970077e+30
+	factorialDouble for 30 is 2.65252859812191032e+32 //--> even at k=30 double gives correct value for 30!, which is 2.6525×10^32
+
+	Approximation with double type for k is: 1.71828182845904553e+00
+	Deviation from exp(x) is: 9.99999999999999556e-01
+	Program ended with exit code: 0
