@@ -3,7 +3,7 @@
 
 __[C0]__ Initial preparation:
 
-⋅⋅* Familiarize yourself with the the operators +=, -=, *=, /=. Operators of these types will be useful for constructing the programs in this assignment.
+* Familiarize yourself with the the operators +=, -=, *=, /=. Operators of these types will be useful for constructing the programs in this assignment.
 
 ⋅⋅* Familiarize yourself with how to exclude a source file from a project build. In this assignment you will be working with three small programs and if you want to create and use a single project to work with them all, you'll need to know how to exclude one or more of them from the build process. (A project can incorporate multiple source files, but only one file can contain int main().) For Visual Studio and Eclipse users you can exclude a specific file from the build by right clicking the __file name__ in the IDE, selecting Properties and then selecting "Exclude from Build" from the appropriate sub-menu.
 
