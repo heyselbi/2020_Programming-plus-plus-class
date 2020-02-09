@@ -38,9 +38,9 @@ Tips:
 * You will need to add the include for cmath (#include <cmath>) in order to have access to the standard library math functions.
 * You can set the output format of floating point values using statements of the form
 
-`cout.setf(ios::scientific); // Sets the format to scientific notation
+`cout.setf(ios::scientific); // Sets the format to scientific notation`
 
-cout.precision(17); // Sets the number of digits output to 17 (not the precision of the calculation!)`
+`cout.precision(17); // Sets the number of digits output to 17 (not the precision of the calculation!)`
 
 These format specification are used for all subsequent invocations of cout. Other ways to modify the output format will be discussed later in the course.
  
