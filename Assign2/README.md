@@ -39,11 +39,12 @@ Tips:
 * You can set the output format of floating point values using statements of the form
 
 `cout.setf(ios::scientific); // Sets the format to scientific notation
+
 cout.precision(17); // Sets the number of digits output to 17 (not the precision of the calculation!)`
 
 These format specification are used for all subsequent invocations of cout. Other ways to modify the output format will be discussed later in the course.
  
 
-What you should turn in.
+### What you should turn in.
 * Submit to the course web site the file Assign2results.txt that contains your results from __[C1]-[C3]__.
 * Submit to the course web site the program files Nfactorial.cpp and ExpTest.cpp. These files must have these __exact__ names. Do not upload the executable or any other files, e.g. the IDE settings files created by the IDE
