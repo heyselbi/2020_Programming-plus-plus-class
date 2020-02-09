@@ -1,0 +1,76 @@
+Assignment 4
+Due: Feb 5, 2020
+Selbi Nuryyeva
+
+OS: MacOS
+IDE: Xcode
+
+[C1]
+For (a) and (b), my code was: 
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int x[5]; //just changed this one based on qn
+    //if i say "int x[]", it does not build
+    for (int i = 0; i < 5; ++i)
+    {
+        cout << x[i] << endl;
+    }
+}
+
+(a) 
+0
+0
+0
+0
+-272632568
+Program ended with exit code: 0
+
+(b)
+0
+0
+0
+0
+6.95313e-310
+Program ended with exit code: 0
+
+
+For (c) and (d), my code was:
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int m = 5;
+    int* x = new int [m];
+    for (int i = 0; i < 5; ++i)
+    {
+        cout << x[i] << endl;
+    }
+    delete []x;
+}
+
+(c)
+1874622469
+32767
+1874763663
+32767
+1874696889
+Program ended with exit code: 0
+
+(d)
+0
+-1.32875e-315
+2.23812e-321
+3.10504e+231
+1.49167e-154
+Program ended with exit code: 0
+
+(e) It prints out a random number (ie. -3.09923e+31), but it warns me that 3 is out of range. Since we declared it to be size of 3, we only have zArray[0], zArray[1], zArray[2]. zArray[3] was not declared and is out of bounds. It points to some random number stored in memory.
+
+(f) It errors out, warns me that 3 is out of bounds and goes into some kind of stuck process (ie. program does not even return/exit)
+
+
