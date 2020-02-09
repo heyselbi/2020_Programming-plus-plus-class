@@ -37,9 +37,7 @@ i.e. the class will have data members eps, kMax, and kStar, a default constructo
 
 (c) Verify that you can compile and successfully run the program NumParamsTest.cpp.You will be submitting your modified version of NumParamsTest.cpp.
 
-
-
-
+![alt text](https://github.com/heyselbi/2020_Programming-plus-plus-class/blob/master/Assign4/NumParams.png "NumParams")
 
 **[C3]** The goal of this problem is to create a class **ExpFun** so that when inserted into ExpFunTest.cpp and ExpFunTest.cpp is compiled into an executable, the program runs successfully.
 
@@ -47,8 +45,7 @@ i.e. the class will have data members eps, kMax, and kStar, a default constructo
 
 (b) In ExpFunTest.cpp, define a class ExpFun, a class to create approximate values of the exponential function. The class you create will be the implementation of the class described by the following class diagram (UML class diagram notation):
 
- ExpFun
-
+![alt text](https://github.com/heyselbi/2020_Programming-plus-plus-class/blob/master/Assign4/ExpFun.png "ExpFun")
 
 (c) Verify that you can compile and successfully run the program ExpFunTest.cpp.You will be submitting your modified version of ExpFunTest.cpp.
 
